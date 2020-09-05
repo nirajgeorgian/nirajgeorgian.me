@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'gatsby'
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
   return (
     <div className="about">
       <h2>About Me</h2>

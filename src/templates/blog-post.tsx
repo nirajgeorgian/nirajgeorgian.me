@@ -1,10 +1,12 @@
-/* eslint-disable react/prop-types */
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { Header } from 'components/header'
 import ThemeProvider from 'contexts/theme'
+import { Container } from 'components/container'
+import { BlogWrapper } from 'templates/style'
+import { Footer } from 'components/footer'
 
-const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
+const BlogPostTemplate: React.FC<any> = ({ data }) => {
   const post = data.markdownRemark
   // const siteTitle = data.site.siteMetadata.title
   // const { previous, next } = pageContext
@@ -12,13 +14,16 @@ const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
   return (
     <ThemeProvider>
       <Header />
-      <article>
-        <header>
-          <h1>{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
-        </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
-      </article>
+      <BlogWrapper as={Container}>
+        <article>
+          <header>
+            <h1>{post.frontmatter.title}</h1>
+            <p>{post.frontmatter.date}</p>
+          </header>
+          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        </article>
+      </BlogWrapper>
+      <Footer />
     </ThemeProvider>
   )
 }

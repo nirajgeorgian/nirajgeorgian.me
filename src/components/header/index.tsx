@@ -9,10 +9,10 @@ import {
   NavbarLinksWrapper,
   ToggleThemeWrapper
 } from 'components/header/styles'
-import { Container } from 'components/container'
 import { Link } from 'gatsby'
+import { Container } from 'components/container'
 
-export const Header = () => {
+export const Header: React.FC = () => {
   // const [sidebar, toggle] = useState(false)
   const { theme, toggleTheme } = useContext(ThemeContext)
 

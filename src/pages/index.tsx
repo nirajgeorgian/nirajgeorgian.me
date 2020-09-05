@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Header } from 'components/header'
-import ThemeProvider from 'contexts/theme'
+import SEO from 'components/seo'
 
 const Index: React.FC<any> = ({ data, location }) => {
   // const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <ThemeProvider>
+    <>
       <Header />
+      <SEO title="Homepage" />
       {posts.map(({ node }: any) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -32,7 +33,7 @@ const Index: React.FC<any> = ({ data, location }) => {
           </article>
         )
       })}
-    </ThemeProvider>
+    </>
   )
 }
 

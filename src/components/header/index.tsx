@@ -19,9 +19,11 @@ export const Header = () => {
   return (
     <Wrapper>
       <NavbarWrapper as={Container}>
-        <Brand as={Link} to="/" theme={theme}>
-          Niraj Georgian
-        </Brand>
+        <h2>
+          <Brand as={Link} to="/" theme={theme}>
+            nirajgeorgian
+          </Brand>
+        </h2>
         <NavbarLinksWrapper desktop theme={theme}>
           <Link to="/about">About</Link>
           <Link to="/projects">Projects</Link>

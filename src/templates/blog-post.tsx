@@ -1,13 +1,16 @@
+/* eslint-disable react/prop-types */
 import * as React from 'react'
 import { graphql } from 'gatsby'
+import { Header } from 'components/header'
 
 const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
-  const { previous, next } = pageContext
+  // const siteTitle = data.site.siteMetadata.title
+  // const { previous, next } = pageContext
 
   return (
-    <div>
+    <>
+      <Header />
       <article>
         <header>
           <h1>{post.frontmatter.title}</h1>
@@ -15,7 +18,7 @@ const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
       </article>
-    </div>
+    </>
   )
 }
 

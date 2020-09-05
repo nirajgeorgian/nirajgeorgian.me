@@ -34,6 +34,7 @@ export const Brand = styled.a`
     mix-blend-mode: ${({ theme }) =>
       theme === 'light' ? 'unset' : 'difference'};
   }
+  text-decoration: none;
 `
 
 export const ToggleThemeWrapper = styled.button`

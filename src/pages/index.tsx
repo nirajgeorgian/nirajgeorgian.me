@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import ThemeProvider from 'contexts/theme'
 import { Header } from 'components/header'
 import SEO from 'components/seo'
 
@@ -8,7 +9,7 @@ const Index: React.FC<any> = ({ data, location }) => {
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <>
+    <ThemeProvider>
       <Header />
       <SEO title="Homepage" />
       {posts.map(({ node }: any) => {
@@ -33,7 +34,7 @@ const Index: React.FC<any> = ({ data, location }) => {
           </article>
         )
       })}
-    </>
+    </ThemeProvider>
   )
 }
 

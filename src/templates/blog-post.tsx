@@ -2,6 +2,7 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
 import { Header } from 'components/header'
+import ThemeProvider from 'contexts/theme'
 
 const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -9,7 +10,7 @@ const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
   // const { previous, next } = pageContext
 
   return (
-    <>
+    <ThemeProvider>
       <Header />
       <article>
         <header>
@@ -18,7 +19,7 @@ const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
       </article>
-    </>
+    </ThemeProvider>
   )
 }
 

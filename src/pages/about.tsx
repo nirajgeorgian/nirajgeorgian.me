@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Link } from "gatsby";
+import * as React from 'react'
+import { Link } from 'gatsby'
 
 const AboutPage = () => {
   return (
@@ -8,7 +8,7 @@ const AboutPage = () => {
       <p>niraj georgian</p>
       <Link to="/">&larr; back to home</Link>
     </div>
-  );
-};
+  )
+}
 
-export default AboutPage;
+export default AboutPage

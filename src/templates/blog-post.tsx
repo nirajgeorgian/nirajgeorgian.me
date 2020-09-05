@@ -1,6 +1,5 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-
+import * as React from 'react'
+import { graphql } from 'gatsby'
 
 const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -11,12 +10,8 @@ const BlogPostTemplate: React.FC<any> = ({ data, pageContext, location }) => {
     <div>
       <article>
         <header>
-          <h1>
-            {post.frontmatter.title}
-          </h1>
-          <p>
-            {post.frontmatter.date}
-          </p>
+          <h1>{post.frontmatter.title}</h1>
+          <p>{post.frontmatter.date}</p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
       </article>

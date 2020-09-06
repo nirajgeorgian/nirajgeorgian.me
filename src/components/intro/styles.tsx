@@ -23,31 +23,6 @@ export const Details = styled.div<{ theme: string }>`
     width: 100%;
     margin-bottom: 2rem;
   }
-  h1 {
-    margin-bottom: 2rem;
-    font-size: 36pt;
-    color: ${({ theme }) => (theme === 'light' ? '#212121' : '#fff')};
-    @media (max-width: 960px) {
-      mix-blend-mode: ${({ theme }) =>
-        theme === 'light' ? 'unset' : 'difference'};
-    }
-    @media (max-width: 680px) {
-      font-size: 30pt;
-    }
-  }
-  h4 {
-    margin-bottom: 2.5rem;
-    font-size: 32pt;
-    font-weight: normal;
-    color: ${({ theme }) => (theme === 'light' ? '#707070' : '#e6e6e6')};
-    @media (max-width: 960px) {
-      mix-blend-mode: ${({ theme }) =>
-        theme === 'light' ? 'unset' : 'difference'};
-    }
-    @media (max-width: 680px) {
-      font-size: 26pt;
-    }
-  }
 `
 
 export const Thumbnail = styled.div`

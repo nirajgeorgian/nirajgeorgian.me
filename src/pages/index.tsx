@@ -1,26 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, graphql } from 'gatsby'
-import ThemeProvider from 'contexts/theme'
+import ThemeProvider, { ThemeContext } from 'contexts/theme'
 import { Header } from 'components/header'
 import SEO from 'components/seo'
 import { Intro } from 'components/intro'
-import { Container } from 'components/container'
+import { Container, ContentContainer } from 'components/container'
 import { Footer } from 'components/footer'
+import { Article, Body } from 'components/base'
 
-const Index: React.FC<any> = ({ data }) => {
+const Homepage: React.FC<any> = ({ data }) => {
   // const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+  const { theme } = useContext(ThemeContext)
 
   return (
-    <ThemeProvider>
-      <Header />
-      <Container>
+    <Container theme={theme}>
+      <ContentContainer theme={theme}>
         <SEO title="Homepage" />
         <Intro />
         {posts.map(({ node }: any) => {
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <article key={node.fields.slug}>
+            <Article key={node.fields.slug}>
               <header>
                 <h3>
                   <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
@@ -36,11 +37,22 @@ const Index: React.FC<any> = ({ data }) => {
                   }}
                 />
               </section>
-            </article>
+            </Article>
           )
         })}
-      </Container>
-      <Footer />
+      </ContentContainer>
+    </Container>
+  )
+}
+
+const Index: React.FC<any> = ({ data }) => {
+  return (
+    <ThemeProvider>
+      <Body>
+        <Header />
+        <Homepage data={data} />
+        <Footer />
+      </Body>
     </ThemeProvider>
   )
 }

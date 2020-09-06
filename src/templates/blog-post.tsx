@@ -3,8 +3,15 @@ import { graphql } from 'gatsby'
 import { Header } from 'components/header'
 import ThemeProvider from 'contexts/theme'
 import { Container } from 'components/container'
-import { BlogWrapper } from 'templates/style'
 import { Footer } from 'components/footer'
+import styled from 'styled-components'
+
+export const BlogWrapper = styled.div`
+  padding: 4rem 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+`
 
 const BlogPostTemplate: React.FC<any> = ({ data }) => {
   const post = data.markdownRemark

@@ -9,6 +9,7 @@ import {
 import { ThemeContext } from 'contexts/theme'
 import { Link } from 'gatsby'
 import { Button } from 'components/button'
+import { Heading, SubHeading } from 'components/base'
 
 export const Intro: React.FC = () => {
   const { theme } = useContext(ThemeContext)
@@ -17,8 +18,10 @@ export const Intro: React.FC = () => {
     <Wrapper>
       <IntroWrapper>
         <Details theme={theme}>
-          <h1>Hi There!</h1>
-          <h4>I’m Niraj and I’m a software engineer!</h4>
+          <Heading theme={theme}>Hi There!</Heading>
+          <SubHeading theme={theme}>
+            I’m Niraj and I’m a software engineer!
+          </SubHeading>
           <Button as={Link} to="/contact">
             Hire me
           </Button>

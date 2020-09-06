@@ -1,24 +1,5 @@
 import styled from 'styled-components'
-
-export const Wrapper = styled.div`
-  background: transparent;
-  width: 100%;
-`
-
-export const Overlay = styled.div<{ sidebar: boolean }>`
-  position: fixed;
-  background: rgba(0, 0, 0, 0.7);
-  width: 100%;
-  height: 100%;
-  display: none;
-  transition: 0.4s;
-  ${({ sidebar }) =>
-    sidebar &&
-    `
-      display: block;
-      z-index: 4;
-  `}
-`
+import { colors, ITheme } from 'components/base'
 
 export const NavbarWrapper = styled.div`
   padding: 1.5rem 0;
@@ -27,8 +8,11 @@ export const NavbarWrapper = styled.div`
   justify-content: space-between;
 `
 
-export const Brand = styled.a`
-  color: ${({ theme }) => (theme === 'light' ? '#000' : '#fff')};
+export const Brand = styled.a<ITheme>`
+  color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
+  :hover {
+    color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
+  }
   @media (max-width: 960px) {
     mix-blend-mode: ${({ theme }) =>
       theme === 'light' ? 'unset' : 'difference'};
@@ -36,29 +20,12 @@ export const Brand = styled.a`
   text-decoration: none;
 `
 
-export const ToggleThemeWrapper = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s all;
-  &:focus {
-    outline: none;
-    transition: 0.3s all;
-  }
-  @media (max-width: 960px) {
-    text-align: left;
-  }
-  img {
-    margin-bottom: unset;
-  }
-`
-
 export const NavbarLinksWrapper = styled.div<{
   theme: string
   desktop: boolean
 }>`
   a {
-    color: #000;
+    color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
     text-decoration: none;
     @media (max-width: 960px) {
       color: ${({ theme }) => (theme === 'light' ? '#000' : '#fff')};
@@ -90,4 +57,21 @@ export const NavbarLinksWrapper = styled.div<{
           }
       }
   `}
+`
+
+export const ToggleThemeWrapper = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s all;
+  &:focus {
+    outline: none;
+    transition: 0.3s all;
+  }
+  @media (max-width: 960px) {
+    text-align: left;
+  }
+  img {
+    margin-bottom: unset;
+  }
 `

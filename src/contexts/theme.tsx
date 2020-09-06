@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { createContext } from 'react'
 import useDarkMode from 'contexts/hooks/useTheme'
 

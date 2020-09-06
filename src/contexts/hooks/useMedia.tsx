@@ -4,7 +4,7 @@ const useMedia = (
   queries: Array<string>,
   values: Array<any>,
   defaultValue: any
-) => {
+): any => {
   const [value, setValue] = useState(null)
 
   useEffect(() => {

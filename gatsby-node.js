@@ -9,10 +9,23 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   })
 }
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === 'MarkdownRemark') {
+    const value = createFilePath({ node, getNode })
+    createNodeField({
+      name: 'slug',
+      node,
+      value
+    })
+  }
+}
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const blogPost = path.resolve('./src/templates/blog-post.tsx')
+  const blogPost = path.resolve(__dirname, 'src/templates/blog-post.tsx')
   const result = await graphql(
     `
       {
@@ -36,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
   )
 
   if (result.errors) {
-    throw result.errors
+    reporter.panic('failed to create posts', result.errors)
   }
 
   // Create blog posts pages.
@@ -56,17 +69,4 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     })
   })
-}
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === 'MarkdownRemark') {
-    const value = createFilePath({ node, getNode })
-    createNodeField({
-      name: 'slug',
-      node,
-      value
-    })
-  }
 }

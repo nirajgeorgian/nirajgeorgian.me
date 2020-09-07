@@ -16,6 +16,7 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 export const SiteTitle = styled.h1<ITheme>`
   margin-bottom: 0;
   color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};

@@ -1,21 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Link, graphql } from 'gatsby'
-import ThemeProvider, { ThemeContext } from 'contexts/theme'
-import { Header } from 'components/header'
+import ThemeProvider from 'contexts/theme'
 import SEO from 'components/seo'
 import { Intro } from 'components/intro'
-import { Container, ContentContainer } from 'components/container'
-import { Footer } from 'components/footer'
-import { Article, Body } from 'components/base'
+import { Article } from 'components/base'
+import Layout from 'components/layout'
 
-const Homepage: React.FC<any> = ({ data }) => {
-  // const siteTitle = data.site.siteMetadata.title
+const Index: React.FC<any> = ({ data }) => {
   const posts = data.allMarkdownRemark.edges
-  const { theme } = useContext(ThemeContext)
 
   return (
-    <Container theme={theme}>
-      <ContentContainer theme={theme}>
+    <ThemeProvider>
+      <Layout>
         <SEO title="Homepage" />
         <Intro />
         {posts.map(({ node }: any) => {
@@ -40,19 +36,7 @@ const Homepage: React.FC<any> = ({ data }) => {
             </Article>
           )
         })}
-      </ContentContainer>
-    </Container>
-  )
-}
-
-const Index: React.FC<any> = ({ data }) => {
-  return (
-    <ThemeProvider>
-      <Body>
-        <Header />
-        <Homepage data={data} />
-        <Footer />
-      </Body>
+      </Layout>
     </ThemeProvider>
   )
 }

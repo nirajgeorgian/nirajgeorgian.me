@@ -13,7 +13,6 @@ import { Container, ContentContainer } from 'components/container'
 import { SiteTitle } from 'components/base'
 
 export const Header: React.FC = () => {
-  // const [sidebar, toggle] = useState(false)
   const { theme, toggleTheme } = useContext(ThemeContext)
 
   return (

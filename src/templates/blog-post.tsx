@@ -1,10 +1,8 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Header } from 'components/header'
 import ThemeProvider from 'contexts/theme'
-import { Container } from 'components/container'
-import { Footer } from 'components/footer'
 import styled from 'styled-components'
+import Layout from 'components/layout'
 
 export const BlogWrapper = styled.div`
   padding: 4rem 0;
@@ -20,17 +18,17 @@ const BlogPostTemplate: React.FC<any> = ({ data }) => {
 
   return (
     <ThemeProvider>
-      <Header />
-      <BlogWrapper as={Container}>
-        <article>
-          <header>
-            <h1>{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.date}</p>
-          </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        </article>
-      </BlogWrapper>
-      <Footer />
+      <Layout>
+        <BlogWrapper>
+          <article>
+            <header>
+              <h1>{post.frontmatter.title}</h1>
+              <p>{post.frontmatter.date}</p>
+            </header>
+            <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          </article>
+        </BlogWrapper>
+      </Layout>
     </ThemeProvider>
   )
 }

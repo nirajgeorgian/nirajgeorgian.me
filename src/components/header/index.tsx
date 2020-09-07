@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'contexts/theme'
-import sunIcon from 'content/assets/icons/sun.svg'
-import moonIcon from 'content/assets/icons/moon.svg'
+import sunIcon from 'assets/icons/sun.svg'
+import moonIcon from 'assets/icons/moon.svg'
 import {
   NavbarWrapper,
   Brand,

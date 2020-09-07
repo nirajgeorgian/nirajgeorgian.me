@@ -16,15 +16,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'blog',
-        path: `${__dirname}/src/content/blog/`
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'assets',
-        path: `${__dirname}/src/content/assets/`,
-        ignore: ['**/.*'] // ignore files starting with a dot
+        path: `${__dirname}/content/blog/`
       }
     },
     {

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import dev from 'content/assets/illustrations/dev.svg'
+import dev from 'assets/illustrations/dev.svg'
 import {
   Wrapper,
   IntroWrapper,

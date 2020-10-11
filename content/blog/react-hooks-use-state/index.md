@@ -18,46 +18,46 @@ and all these libraries have few things in common, that they all operate on comp
 
 ## Components - A Bigger Picture
 
-Components are essentials for frontend development as it help's us to break down a bigger application into smaller reusable application and then let us glue all those small pieces together to form a big and complex application.
-We can think of component as basic atomic unit of frontend development which can exist on it's own. and application are build composed of many small such atomic level components.
+Components driven development is one of the most essential principals in frontend development as it helps us to break down a complex application into smaller reusable chunks of logic and then let us glue all those small pieces together to form a complex and customisable application.
+We can think of components as atomic units of frontend development which can exist on its own and application are composed of many such small atomic level components.
+
 Let's take an example application where we need to create a small user review form.
-things we require for this form may include:
+We may break it down as such:
 
 > **username** :- responsible for storing the user name as who is submitting the form
 >
-> **comment** :- responsible for storing the complain text
+> **feedback** :- responsible for storing the feedback of the customer/client
 >
 > **button** :- button will help us to submit the form
 
-When working with any frontend library or framework we can split these into it's own managed component and we can have a structure where we have 2 small files responsible for username and comment section and these two have their values stored in them.
+When working with any frontend library or framework we can split these into its own managed components and we can have a structure where we have 2 small files responsible for username and feedback section and these two have their values stored in them.
 
 ```bash {numberLines}
 parent folder
 .
 ├── components
-│   ├── comment.js
+│   ├── feedback.js
 │   └── username.js
 └── user-review.js
 ```
 
-Here we can see we have created two files inside components directory. one is responsible for comment and other one is responsible for username.
-we assemble all the above two small components and combine them into `user-review.js` to form a complete user form which can then be showed to the browser.
-when you work with few components it's easy to manage them and keep track of what other components are doing and how they are behaving to external/internal changes. but think of a situation where you have
-100's of component, then it is quite complicated to keep tract of how it is behaving with other components and to solve this we manage their own state in some of state management solutions.
+Here we can see we have created two files inside components directory; one is responsible for taking feeback and the other one is responsible for username.
+We assemble all the above two small components and combine them into `user-review.js` to form a complete user form which can then be showed to the browser.
+When you work with few a components it's easy to manage them and keep track of what other components are doing and how they are behaving to external/internal changes. Now think of a situation where you have 100's of component, then it is quite complicated to keep track of how it is behaving with other components and to solve this we manage their own state in some of state management solutions.
 
 ## React - functional hooks
 
-we can create an react component using class component and functional component but as functional components are light and easy to use, we will stick to it.
-In functional component we don't have the `setState` flexibility so we use react hooks to manage our state. there are many react hooks which comes by default with react and all return different values.
+We can create an react component using class component and functional component but as functional components are light and easy to use, we will stick to it.
+Functional componens don't have the `setState` flexibility of its Class counterpart, so we use react hooks to manage our state. React provides various hooks out of the box to manage the component state to various lifecycle stages in functional components.
 
 [What is a Hook? A Hook is a special function that lets you “hook into” React features](https://reactjs.org/docs/hooks-state.html)
 Few official react hooks are:
 
-> - useState :- The State Hook lets you add React state to function components.
+> - useState :- The State Hook lets you add React state to functional components.
 >
-> - useEffect :- The Effect Hook lets you perform side effects in function components.
+> - useEffect :- The Effect Hook lets you perform side effects in functional components.
 >
-> - useReducer :- The Reducer Hook lets you define state in redux way using actions and let you dispatch them.
+> - useReducer :- The Reducer Hook lets you define state in the redux way using actions and let you dispatch them.
 >
 > - useMemo :- The Memo Hook lets you return a [memoized](https://en.wikipedia.org/wiki/Memoization) value.
 >
@@ -65,13 +65,13 @@ Few official react hooks are:
 
 ## useState : Our First Hook
 
-we can use useState from inside any functional component to store any value. on use of useState, it returns two variable as array. first index values is the actual value and the second indexed value is a function which acts as a setter to update the state value.
+We can use the useState hook from inside any functional component to store any state variable. The useState API returns two variable as an array. The first of the two is the actual value(state variable) and the second indexed value is a function which acts as a setter to update the state value.
 
 ```js {numberLines}
-const [example, setExample] = React.useState('initialValue)
+const [example, setExample] = React.useState(initialValue)
 ```
 
-although the state initialization can vary but to make things simple let's just pass an initial value of empty in the below example to see how to store value in username component.
+Although the state initialization can vary but to make things simple let's just pass an initial value of empty string in the below example to see how to store value in username component.
 
 ```js {4, 9,numberLines}
 import React from 'react'
@@ -88,12 +88,12 @@ export default function App() {
 }
 ```
 
-here we can see that on the highlighted line we are using react useState hook to store the value of username. This hook returns us two things the actual value of the state and an function to change it.
-The change function accept's a value or a function, where we can computed the value and return it which will get assigned to the state.
-on line 9, we can see that we have an onChange props which let's us update the state based on every input change. we can see that on setUsername we are calling it with the updated input element value.
-and that's it. it's that simple. You create a state with useState, read the value as needed and updated it whenever we need.
-but let us move one step further. Now we have our initial small application where user can type their username and it get's updated in store. but we want to store it for future reference also, so probably it's a nice idea to store it in local storage on form submit and read initial value from it.
-As we will now store the username value in local storage for future reference,let's add one more field for comment and a button for form submission.
+here we can see that on the highlighted line we are using React useState hook to store the value of username. This hook returns us two things the actual value of the state and an function to change it.
+The change function accepts a new value or a function where we can compute the new value and return it, which will in turn get assigned to the state variable.
+On line 9, we can see that we have an onChange props which updates the state based on every input change. We can see that on setUsername we are calling it with the updated input element value.
+That's all there is to it. We can simply create a state with useState, read the value as needed and updated it whenever we need.
+Let us move one step further. We have our initial small application where user can type their username and it get's updated in store. Now we want to store it for future reference too, so probably it's a nice idea to store it in local storage on form submit and read initial value from it.
+Let's add one more field for comment and a button for form submission.
 On form submit, we will try to check the value in console for now.
 
 ```js {lineNumber, diff}
@@ -123,8 +123,8 @@ export default function App() {
 }
 ```
 
-After rendering it on UI, and when we type dodo on input and duck on comment, we will see that on console we have a value printed which says: `values are: dodo, duck`.
-Now on form submit we want to store the username in local storage, so let's do that
+After rendering it on UI, when we type dodo as username and duck as comment, we will see that on console we have a value printed which says: `values are: dodo, duck`.
+Now on form submit we want to store the username in local storage, so let's do that:
 
 ```js {lineNumber}
 const onFormSubmit = (event) => {
@@ -134,11 +134,11 @@ const onFormSubmit = (event) => {
 }
 ```
 
-here we are using localStorage.setItem to set the value in localStorage, which we can read later when when we should read.
-May be from my point of view, when application loads, then it's the good time to read the value from local storage and see if any value exist, then we assign that value as initial value to username or we will initialize our state with empty string.
-But we don't have any lifecycle methods in functional component, so how can we fire some event on app load, here comes useEffect hook into picture, which let's you fire any event on app renders or event when any value changes.
-We will dive deep into useEffect in any other article but to make things simple, we can just pass an empty array as second argument to useEffect and it will run only once on app load.
-as useState returns us two values, useEffect does not return anything, it's return type is null.
+here we are using localStorage.setItem to set the value in localStorage, which we can read later when when we want to.
+One usecase might be to read the value from local storage on application load and if any value exis we assign that value as initial value to our username state or we will initialize our state with empty string.
+But we don't have any lifecycle methods in functional component to let React know we need to fire some event on application load; here comes useEffect hook into the picture. The useEffect hook let's you fire any event on app renders or event when any value on its dependency array changes.
+We will dive deep into useEffect in any other article but to make things simple, we can just pass an empty array as second argument to useEffect and it will run only once when the component renders/loads.
+Unlike useState which returns us two values, useEffect does not return anything, its return type is null.
 Here's how it's being used.
 
 ```js {lineNumber}
@@ -147,7 +147,7 @@ function ExampleComponent() {
 
   React.useEffect(() => {
     // perform some computations here and assign it to state
-  }, []) // this empty array will make sure that it runs only on app load
+  }, []) // this empty array will make sure that it runs only which the component renders/loads
 }
 ```
 
@@ -193,11 +193,11 @@ export default function App() {
 }
 ```
 
-here we can see that, we are passing an function to useEffect and inside that function, we first check for value in local storage and if we have the value, we use setUsername to assign the value back to the username state.
-and inside our html we use value props to show initial value inside the field so that user does not have to type again and again and on each consecutive save, we will again update the localStorage with the updated value.
+Here we are passing a function to useEffect and inside that function we first check for username key in local storage and if we have a value, we use setUsername to assign the value back to the username state.
+This way the user can see their username as nitial value in the username field so that user does not have to type again and again and on each consecutive save. We will update the localStorage with the new value when user clicks on submit.
 
-One step down, think where we need multiple keys to store inside localStorage we have to repeat this process again and again, so what we can do is that we can wrap the common functionality into one custom hook and use it wherever we need.
-I'm not going to explain how to create custom hooks now but, we can use some prebuild hooks from open community. one such hook is `useLocalStorage`.
+One step down, now what if we need multiple keys to store inside localStorage we have to repeat this process again and again, so what we can do is that, we can wrap the common functionality into one custom hook and use it wherever we need.
+I'm not going to explain how to create custom hooks for now, but we can use some prebuild hooks from opensource community. One such hook is `useLocalStorage`.
 
 ```js {lineNumber}
 // code form: https://usehooks.com/useLocalStorage/
@@ -214,12 +214,12 @@ function useLocalStorage(key, initialValue) {
       return item ? JSON.parse(item) : initialValue
     } catch (error) {
       // If error also return initialValue
-      console.log(error)
+      console.error(error)
       return initialValue
     }
   })
 
-  // Return a wrapped version of useState's setter function that ...
+  // Return a wrapped version of useState's setter function that it ...
   // ... persists the new value to localStorage.
   const setValue = (value) => {
     try {
@@ -240,8 +240,8 @@ function useLocalStorage(key, initialValue) {
 }
 ```
 
-what this hook does is that it accepts a key and a default value to return if no value was set in local storage.
-In the return statement, we have two values combined same like useState as return value, the first key the actual value itself and the second value to set the value to local storage.
+What this hook does is that it accepts a key and a default value to return if no value was set in local storage.
+In the return statement, we have two values combined similar to the useState API, the first key the actual value itself and the second value to set the value to local storage.
 with this hook in place our code will get reduced and we have more reusability.
 
 ```js {lineNumber, diff}
@@ -287,8 +287,6 @@ export default function App() {
 ```
 
 ## Conclusion
-
-// destructuring array and objects
 
 Give enough though as to what to store in core useState state and what we can derive from custom hooks.
 setState works really well for small state store and for local state management, but if we want to make the state available across the application, then probably we have to use some other hooks, maybe useReducer along with react context API.

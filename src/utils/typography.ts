@@ -1,7 +1,7 @@
 import Typography from 'typography'
 import AltonTheme from 'typography-theme-alton'
 
-AltonTheme.baseFontSize = '14px'
+AltonTheme.baseFontSize = '16px'
 AltonTheme.baseLineHeight = 1.45
 AltonTheme.overrideThemeStyles = () => {
   return {

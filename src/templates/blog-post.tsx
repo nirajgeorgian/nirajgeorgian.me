@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { graphql } from 'gatsby'
-import ThemeProvider from 'contexts/theme'
+import { graphql, Link } from 'gatsby'
+import ThemeProvider, { ThemeContext } from 'contexts/theme'
 import styled from 'styled-components'
 import Layout from 'components/layout'
+import { Article } from 'components/base'
+import { useContext } from 'react'
 
 export const BlogWrapper = styled.div`
   padding: 4rem 0;
@@ -10,26 +12,75 @@ export const BlogWrapper = styled.div`
   align-items: flex-start;
   flex-direction: column;
 `
+export const ArticleHeader = styled.h1`
+  color: ${({ theme }) => (theme === 'dark' ? 'white' : 'black')};
+`
 
-const BlogPostTemplate: React.FC<any> = ({ data }) => {
+export const BlogListHeader = styled(Link)`
+  color: ${({ theme }) => (theme === 'dark' ? '#00adb5' : 'black')};
+`
+
+export const BlogPostLayout: React.FC = ({ children }) => (
+  <ThemeProvider>
+    <Layout>{children}</Layout>
+  </ThemeProvider>
+)
+
+export const BlogLinks: React.FC<{ node: any; title: string }> = ({
+  node,
+  title
+}) => {
+  const { theme } = useContext(ThemeContext)
+
+  return (
+    <Article key={node.fields.slug}>
+      <header>
+        <h2>
+          <BlogListHeader
+            theme={theme}
+            style={{ boxShadow: 'none' }}
+            to={node.fields.slug}
+          >
+            {title}
+          </BlogListHeader>
+        </h2>
+        <small>{node.frontmatter.date}</small>
+      </header>
+      <section>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: node.frontmatter.description || node.excerpt
+          }}
+        />
+      </section>
+    </Article>
+  )
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
   const post = data.markdownRemark
   // const siteTitle = data.site.siteMetadata.title
   // const { previous, next } = pageContext
 
   return (
-    <ThemeProvider>
-      <Layout>
-        <BlogWrapper>
-          <article>
-            <header>
-              <h1>{post.frontmatter.title}</h1>
-              <p>{post.frontmatter.date}</p>
-            </header>
-            <section dangerouslySetInnerHTML={{ __html: post.html }} />
-          </article>
-        </BlogWrapper>
-      </Layout>
-    </ThemeProvider>
+    <BlogPostLayout>
+      <ThemeContext.Consumer>
+        {({ theme }) => (
+          <BlogWrapper>
+            <article>
+              <header>
+                <ArticleHeader theme={theme}>
+                  {post.frontmatter.title}
+                </ArticleHeader>
+                <p>{post.frontmatter.date}</p>
+              </header>
+              <section dangerouslySetInnerHTML={{ __html: post.html }} />
+            </article>
+          </BlogWrapper>
+        )}
+      </ThemeContext.Consumer>
+    </BlogPostLayout>
   )
 }
 

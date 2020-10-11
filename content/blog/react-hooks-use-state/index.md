@@ -10,7 +10,8 @@ categories:
 keywords:
   - javascript
   - functional component
-image: 'assets/images/useState.png'
+banner: './images/aron-visuals.png'
+bannerCredit: 'Photo by [Aron Visuals](https://unsplash.com/@aronvisuals)'
 ---
 
 With each passing day, we see many new frontend libraries coming into practices. All major frontend development started with [JQuery](https://jquery.com/) and today we are here, where we have [React](https://reactjs.org/), [Angular](https://angular.io/), [Vue](https://vuejs.org/), [Ember](https://emberjs.com/) etc.
@@ -24,11 +25,9 @@ We can think of components as atomic units of frontend development which can exi
 Let's take an example application where we need to create a small user review form.
 We may break it down as such:
 
-> **username** :- responsible for storing the user name as who is submitting the form
->
-> **feedback** :- responsible for storing the feedback of the customer/client
->
-> **button** :- button will help us to submit the form
+**username** :- responsible for storing the user name as who is submitting the form<br>
+**feedback** :- responsible for storing the feedback of the customer/client<br>
+**button** :- button will help us to submit the form
 
 When working with any frontend library or framework we can split these into its own managed components and we can have a structure where we have 2 small files responsible for username and feedback section and these two have their values stored in them.
 
@@ -50,18 +49,14 @@ When you work with few a components it's easy to manage them and keep track of w
 We can create an react component using class component and functional component but as functional components are light and easy to use, we will stick to it.
 Functional componens don't have the `setState` flexibility of its Class counterpart, so we use react hooks to manage our state. React provides various hooks out of the box to manage the component state to various lifecycle stages in functional components.
 
-[What is a Hook? A Hook is a special function that lets you “hook into” React features](https://reactjs.org/docs/hooks-state.html)
+What is a Hook? A Hook is a special function that lets you [“hook into” React features](https://reactjs.org/docs/hooks-state.html)
 Few official react hooks are:
 
-> - useState :- The State Hook lets you add React state to functional components.
->
-> - useEffect :- The Effect Hook lets you perform side effects in functional components.
->
-> - useReducer :- The Reducer Hook lets you define state in the redux way using actions and let you dispatch them.
->
-> - useMemo :- The Memo Hook lets you return a [memoized](https://en.wikipedia.org/wiki/Memoization) value.
->
-> - useCallback :- The Callback Hook lets you return a [memoized](https://en.wikipedia.org/wiki/Memoization) callback
+- useState :- The State Hook lets you add React state to functional components.
+- useEffect :- The Effect Hook lets you perform side effects in functional components.
+- useReducer :- The Reducer Hook lets you define state in the redux way using actions and let you dispatch them.
+- useMemo :- The Memo Hook lets you return a [memoized](https://en.wikipedia.org/wiki/Memoization) value.
+- useCallback :- The Callback Hook lets you return a [memoized](https://en.wikipedia.org/wiki/Memoization) callback
 
 ## useState : Our First Hook
 
@@ -71,7 +66,27 @@ We can use the useState hook from inside any functional component to store any s
 const [example, setExample] = React.useState(initialValue)
 ```
 
-Although the state initialization can vary but to make things simple let's just pass an initial value of empty string in the below example to see how to store value in username component.
+We can see that the return value is an array and not a variable. It's called array destructuring.<br>
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.<br>
+below is an small snippet from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+```js {numberLines, 2, 10}
+let a, b, rest
+;[a, b] = [10, 20]
+
+console.log(a)
+// expected output: 10
+
+console.log(b)
+// expected output: 20
+;[a, b, ...rest] = [10, 20, 30, 40, 50]
+
+console.log(rest)
+// expected output: Array [30,40,50]
+```
+
+so using array destructuring, we extracted out the example and setExample value from it's returned value.
+although the state initialization can vary but to make things simple let's just pass an initial value of empty in the below example to see how to store value in username component.
 
 ```js {4, 9,numberLines}
 import React from 'react'
@@ -290,4 +305,4 @@ export default function App() {
 
 Give enough though as to what to store in core useState state and what we can derive from custom hooks.
 setState works really well for small state store and for local state management, but if we want to make the state available across the application, then probably we have to use some other hooks, maybe useReducer along with react context API.
-further reading ....
+for further reading, check out the official [react docs](https://reactjs.org/docs/hooks-state.html). It is very well written and easy to understand

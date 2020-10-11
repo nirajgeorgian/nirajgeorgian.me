@@ -19,6 +19,36 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value
     })
+
+    createNodeField({
+      name: 'banner',
+      node,
+      value: node.frontmatter.banner
+    })
+
+    createNodeField({
+      name: 'bannerCredit',
+      node,
+      value: node.frontmatter.bannerCredit
+    })
+
+    createNodeField({
+      name: 'title',
+      node,
+      value: node.frontmatter.title
+    })
+
+    createNodeField({
+      name: 'author',
+      node,
+      value: node.frontmatter.author || 'Niraj Georgian'
+    })
+
+    createNodeField({
+      name: 'description',
+      node,
+      value: node.frontmatter.description
+    })
   }
 }
 

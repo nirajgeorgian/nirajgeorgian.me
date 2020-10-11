@@ -12,6 +12,10 @@ export const GlobalStyle = createGlobalStyle<ITheme>`
   blockquote, ul, li {
     color: ${({ theme }) => (theme === 'dark' ? 'white' : 'black')}; 
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: ${({ theme }) => (theme === 'dark' ? 'white' : 'black')};
+  }
 `
 
 export const Wrapper = styled.div`

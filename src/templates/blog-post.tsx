@@ -66,6 +66,7 @@ export const BlogLinks: React.FC<{ node: any; title: string }> = ({
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
   const post = data.markdownRemark
+  const { fields, frontmatter } = post
   // const siteTitle = data.site.siteMetadata.title
   // const { previous, next } = pageContext
 
@@ -76,10 +77,8 @@ export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
           <BlogWrapper>
             <BlogArticle>
               <header>
-                <ArticleHeader theme={theme}>
-                  {post.frontmatter.title}
-                </ArticleHeader>
-                <p>{post.frontmatter.date}</p>
+                <ArticleHeader theme={theme}>{fields.title}</ArticleHeader>
+                <p>{frontmatter.date}</p>
               </header>
               <section dangerouslySetInnerHTML={{ __html: post.html }} />
             </BlogArticle>
@@ -103,6 +102,13 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        banner
+        title
+        author
+        description
+        bannerCredit
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

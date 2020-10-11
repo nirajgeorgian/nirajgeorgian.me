@@ -26,3 +26,6 @@ const [username, setUsername] = useState<ITheme>({
 
 there are cases when we need to have an empty state and while calculating we need to update the state so in that we can start with an empty value.
 let's come back to our original useState where we were storing username and let's say after making some network call we need to update the username and to get started we need null as initial value
+
+// rules of hooks
+// order of hooks

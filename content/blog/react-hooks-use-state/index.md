@@ -288,5 +288,6 @@ export default function App() {
 
 ## Conclusion
 
-Give enough thought as to what to store in core useState state and what we can derive from custom hooks.
+Give enough though as to what to store in core useState state and what we can derive from custom hooks.
 setState works really well for small state store and for local state management, but if we want to make the state available across the application, then probably we have to use some other hooks, maybe useReducer along with react context API.
+further reading ....

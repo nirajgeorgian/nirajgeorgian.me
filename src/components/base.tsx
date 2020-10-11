@@ -18,8 +18,11 @@ export const Body = styled.div`
 `
 
 export const SiteTitle = styled.h1<ITheme>`
-  margin-bottom: 0;
+  margin: 0;
   color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+  }
 `
 
 export const Heading = styled.h1<ITheme>`

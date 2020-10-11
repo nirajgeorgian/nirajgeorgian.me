@@ -12,10 +12,6 @@ export const GlobalStyle = createGlobalStyle<ITheme>`
   blockquote, ul, li {
     color: ${({ theme }) => (theme === 'dark' ? 'white' : 'black')}; 
   }
-
-  .grvsc-line {
-    position: unset;
-  }
 `
 
 export const Wrapper = styled.div`
@@ -23,4 +19,9 @@ export const Wrapper = styled.div`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 0.5rem;
+  }
 `

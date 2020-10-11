@@ -11,6 +11,12 @@ export const BlogWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  @media (max-width: 680px) {
+    padding: 0;
+  }
+`
+export const BlogArticle = styled(Article)`
+  width: 100%;
 `
 export const ArticleHeader = styled.h1`
   color: ${({ theme }) => (theme === 'dark' ? 'white' : 'black')};
@@ -68,7 +74,7 @@ export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
       <ThemeContext.Consumer>
         {({ theme }) => (
           <BlogWrapper>
-            <article>
+            <BlogArticle>
               <header>
                 <ArticleHeader theme={theme}>
                   {post.frontmatter.title}
@@ -76,7 +82,7 @@ export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
                 <p>{post.frontmatter.date}</p>
               </header>
               <section dangerouslySetInnerHTML={{ __html: post.html }} />
-            </article>
+            </BlogArticle>
           </BlogWrapper>
         )}
       </ThemeContext.Consumer>

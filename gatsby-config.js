@@ -26,7 +26,8 @@ module.exports = {
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 590
+              backgroundColor: '#fafafa',
+              maxWidth: 1035
             }
           },
           {
@@ -48,6 +49,7 @@ module.exports = {
               }
             }
           },
+          'gatsby-remark-autolink-headers',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants'
         ]
@@ -59,10 +61,39 @@ module.exports = {
         pathToConfigModule: 'src/utils/typography'
       }
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: 'UA-180316829-1',
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+        // Avoids sending pageview hits from custom paths
+        exclude: ['/preview/**', '/do-not-track/me/too/'],
+        // Defers execution of google analytics script after page load
+        defer: false,
+        // Any additional optional fields
+        sampleRate: 5,
+        siteSpeedSampleRate: 10,
+        cookieDomain: 'example.com'
+      }
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: 'white',
+        // Disable the loading spinner.
+        showSpinner: false
+      }
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-typescript',
-    'gatsby-plugin-styled-components'
+    'gatsby-plugin-typescript'
   ]
 }

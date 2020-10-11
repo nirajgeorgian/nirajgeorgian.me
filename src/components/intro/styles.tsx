@@ -15,6 +15,9 @@ export const IntroWrapper = styled.div`
   @media (max-width: 960px) {
     flex-direction: column;
   }
+  @media (max-width: 576px) {
+    padding: 0;
+  }
 `
 
 export const Details = styled.div<{ theme: string }>`

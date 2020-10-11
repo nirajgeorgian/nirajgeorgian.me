@@ -1,11 +1,14 @@
 import styled from 'styled-components'
-import { colors, ITheme } from 'components/base'
+import { colors } from 'components/base'
 
 export const NavbarWrapper = styled.div`
   padding: 1.5rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
 `
 
 export const NavbarLinksWrapper = styled.div<{
@@ -62,4 +65,24 @@ export const ToggleThemeWrapper = styled.button`
   img {
     margin-bottom: unset;
   }
+`
+
+export const Wrapper = styled.div`
+  background: transparent;
+  width: 100%;
+`
+
+export const Overlay = styled.div`
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  display: none;
+  transition: 0.4s;
+  ${({ sidebar }) =>
+    sidebar &&
+    `
+    display: block;
+    z-index: 4;	
+  `}
 `

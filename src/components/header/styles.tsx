@@ -8,18 +8,6 @@ export const NavbarWrapper = styled.div`
   justify-content: space-between;
 `
 
-export const Brand = styled.a<ITheme>`
-  color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
-  :hover {
-    color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
-  }
-  @media (max-width: 960px) {
-    mix-blend-mode: ${({ theme }) =>
-      theme === 'light' ? 'unset' : 'difference'};
-  }
-  text-decoration: none;
-`
-
 export const NavbarLinksWrapper = styled.div<{
   theme: string
   desktop: boolean

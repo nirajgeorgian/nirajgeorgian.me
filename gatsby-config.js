@@ -35,7 +35,19 @@ module.exports = {
               wrapperStyle: 'margin-bottom: 1.0725rem'
             }
           },
-          'gatsby-remark-vscode',
+          {
+            resolve: 'gatsby-remark-vscode',
+            options: {
+              theme: 'Default Dark+',
+              inlineCode: {
+                marker: '•',
+                theme: {
+                  default: 'Default Light+',
+                  dark: 'Default Dark+'
+                }
+              }
+            }
+          },
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants'
         ]

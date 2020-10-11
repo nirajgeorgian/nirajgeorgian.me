@@ -1,9 +1,15 @@
 ---
-title: React Hooks - useState
 slug: react-hooks-useState
+title: React Hooks - useState
+date: '2020-10-11'
 author: niraj georgian
 description: 'With each passing day, we see many new frontend libraries coming into practices. All major frontend development started with JQuery and today we are here, where we have React, Angular, Vue, Ember etc. and all these libraries have few things in common, that they all operate on component level. In every other frontend framework we have different option to create application but the underlying principle is using components only.'
-date: '2020-10-11'
+categories:
+  - 'react'
+  - 'hooks'
+keywords:
+  - javascript
+  - functional component
 image: 'assets/images/useState.png'
 ---
 
@@ -67,7 +73,7 @@ const [example, setExample] = React.useState('initialValue)
 
 although the state initialization can vary but to make things simple let's just pass an initial value of empty in the below example to see how to store value in username component.
 
-```js {numberLines}
+```js {4, 9,numberLines}
 import React from 'react'
 
 export default function App() {
@@ -90,25 +96,28 @@ but let us move one step further. Now we have our initial small application wher
 As we will now store the username value in local storage for future reference,let's add one more field for comment and a button for form submission.
 On form submit, we will try to check the value in console for now.
 
-```js {lineNumber}
+```js {lineNumber, diff}
 import React from 'react'
 
 export default function App() {
-  const [comment, setComment] = React.useState('')
++  const [comment, setComment] = React.useState('')
   const [username, setUsername] = React.useState('')
 
-  const onFormSubmit = (event) => {
-    event.preventDefault()
-    console.log('values are: ')
-  }
++  const onFormSubmit = (event) => {
++    event.preventDefault()
++    console.log('values are: ')
++  }
 
   return (
     <div>
-      <form onSubmit={onFormSubmit}>
+    <p>current username is: {username}</p>
++     <form onSubmit={onFormSubmit}>
         <input onChange={({ target }) => setUsername(target.value)} />
-        <textarea onChange={({ target }) => setComment(target.value)} />
-        <button type="submit">Submit</button>
-      </form>
++       <br />
++       <textarea onChange={({ target }) => setComment(target.value)} />
++       <br />
++       <button type="submit">Submit</button>
++     </form>
     </div>
   )
 }
@@ -144,19 +153,19 @@ function ExampleComponent() {
 
 so we can refactor our code as below:
 
-```js {lineNumber}
+```js {lineNumber, diff}
 import React from 'react'
 
 export default function App() {
   const [comment, setComment] = React.useState('')
   const [username, setUsername] = React.useState('')
 
-  React.useEffect(() => {
-    const storedUsername = localStorage.getItem('username')
-    if (storedUsername) {
-      setUsername(JSON.parse(storedUsername))
-    }
-  }, [])
++  React.useEffect(() => {
++    const storedUsername = localStorage.getItem('username')
++    if (storedUsername) {
++      setUsername(JSON.parse(storedUsername))
++    }
++  }, [])
 
   const onFormSubmit = (event) => {
     event.preventDefault()
@@ -235,13 +244,14 @@ what this hook does is that it accepts a key and a default value to return if no
 In the return statement, we have two values combined same like useState as return value, the first key the actual value itself and the second value to set the value to local storage.
 with this hook in place our code will get reduced and we have more reusability.
 
-```js {lineNumber}
+```js {lineNumber, diff}
 import React from 'react'
-import { useLocalStorage } from './use-local-storage'
++ import { useLocalStorage } from './use-local-storage'
 
 export default function App() {
   const [comment, setComment] = React.useState('')
-  const [username, setUsername] = useLocalStorage('username', '')
+-  const [username, setUsername] = React.useState('')
++  const [username, setUsername] = useLocalStorage('username', '')
 
   React.useEffect(() => {
     const storedUsername = localStorage.getItem('username')
@@ -278,4 +288,5 @@ export default function App() {
 
 ## Conclusion
 
+Give enough though as to what to store in core useState state and what we can derive from custom hooks.
 setState works really well for small state store and for local state management, but if we want to make the state available across the application, then probably we have to use some other hooks, maybe useReducer along with react context API.

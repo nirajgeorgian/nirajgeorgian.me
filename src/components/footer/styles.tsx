@@ -1,15 +1,8 @@
-import footerIllustration from 'assets/illustrations/footer.svg'
 import styled from 'styled-components'
+import { Container } from 'components/container'
 
-export const Wrapper = styled.div`
-  padding: 28rem 0 4rem 0;
-  background-image: url(${footerIllustration});
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  @media (max-width: 1960px) {
-    padding: 14rem 0 4rem;
-  }
+export const Wrapper = styled(Container)`
+  padding: 3rem 0;
 `
 
 export const Flex = styled.div`
@@ -24,11 +17,6 @@ export const Flex = styled.div`
 `
 
 export const Details = styled.div`
-  h2,
-  a,
-  span {
-    color: #212121;
-  }
   @media (max-width: 680px) {
     margin-bottom: 2rem;
   }

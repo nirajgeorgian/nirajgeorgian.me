@@ -53,3 +53,15 @@ export const SubHeading = styled.h3<ITheme>`
 export const Article = styled.article`
   margin: 1rem 0;
 `
+
+export const Brand = styled.a<ITheme>`
+  color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
+  :hover {
+    color: ${({ theme }) => (theme === 'light' ? colors.dark : colors.light)};
+  }
+  @media (max-width: 960px) {
+    mix-blend-mode: ${({ theme }) =>
+      theme === 'light' ? 'unset' : 'difference'};
+  }
+  text-decoration: none;
+`

@@ -1,17 +1,23 @@
 import React, { useContext } from 'react'
-import { Wrapper, Flex, Links, Details } from 'components/footer/styles'
+import { Link } from 'gatsby'
+import { Flex, Links, Details, Wrapper } from 'components/footer/styles'
 import social from 'components/footer/social.json'
-import { Container, ContentContainer } from 'components/container'
+import { ContentContainer } from 'components/container'
 import { ThemeContext } from 'contexts/theme'
+import { Brand, SiteTitle } from 'components/base'
 
 export const Footer: React.FC = () => {
   const { theme } = useContext(ThemeContext)
 
   return (
-    <Wrapper as={Container} theme={theme}>
+    <Wrapper theme={theme}>
       <Flex as={ContentContainer}>
         <Details>
-          <h2>Niraj Georgian</h2>
+          <SiteTitle theme={theme}>
+            <Brand as={Link} to="/" theme={theme}>
+              Niraj Georgian
+            </Brand>
+          </SiteTitle>
           <span>© All rights are reserved | {new Date().getFullYear()}</span>
         </Details>
         <Links>

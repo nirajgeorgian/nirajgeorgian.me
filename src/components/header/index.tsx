@@ -1,16 +1,15 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'contexts/theme'
+import { Brand, SiteTitle } from 'components/base'
 import sunIcon from 'assets/icons/sun.svg'
 import moonIcon from 'assets/icons/moon.svg'
 import {
   NavbarWrapper,
-  Brand,
   NavbarLinksWrapper,
   ToggleThemeWrapper
 } from 'components/header/styles'
 import { Link } from 'gatsby'
 import { Container, ContentContainer } from 'components/container'
-import { SiteTitle } from 'components/base'
 
 export const Header: React.FC = () => {
   const { theme, toggleTheme } = useContext(ThemeContext)

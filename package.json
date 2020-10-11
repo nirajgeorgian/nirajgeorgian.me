@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Niraj Georgian <nirajgeorgian@gmail.com>",
   "dependencies": {
+    "babel-plugin-styled-components": "^1.11.1",
     "gatsby": "^2.24.53",
     "gatsby-image": "^2.4.16",
     "gatsby-link": "^2.4.13",
@@ -20,14 +21,12 @@
     "gatsby-remark-autolink-headers": "^2.3.15",
     "gatsby-remark-copy-linked-files": "^2.3.13",
     "gatsby-remark-images": "^3.3.28",
-    "gatsby-remark-prismjs": "^3.5.16",
     "gatsby-remark-responsive-iframe": "^2.4.12",
     "gatsby-remark-smartypants": "^2.3.10",
     "gatsby-remark-vscode": "^3.0.1",
     "gatsby-source-filesystem": "^2.3.27",
     "gatsby-transformer-remark": "^2.8.38",
     "gatsby-transformer-sharp": "^2.5.14",
-    "prismjs": "^1.22.0",
     "react": "^16.13.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^16.13.1",
@@ -48,6 +47,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "serve": "gatsby serve",
     "format": "prettier --parser typescript --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.ts*\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

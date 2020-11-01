@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Layout from 'components/layout'
 import { Article } from 'components/base'
 import { useContext } from 'react'
-import Image, { FluidObject } from 'gatsby-image'
+import Image from 'gatsby-image'
 
 export const BlogWrapper = styled.div`
   padding: 4rem 0;

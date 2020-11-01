@@ -1,12 +1,12 @@
 ---
 slug: react-hooks-useState
 title: React Hooks - useState
-date: '2020-10-11'
+date: 2020-10-11
 author: niraj georgian
 description: 'With each passing day, we see many new frontend libraries coming into practices. All major frontend development started with JQuery and today we are here, where we have React, Angular, Vue, Ember etc. and all these libraries have few things in common, that they all operate on component level. In every other frontend framework we have different option to create application but the underlying principle is using components only.'
 categories:
-  - 'react'
-  - 'hooks'
+  - react
+  - hooks
 keywords:
   - javascript
   - functional component

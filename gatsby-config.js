@@ -19,6 +19,7 @@ module.exports = {
         path: `${__dirname}/content/blog/`
       }
     },
+    'gatsby-plugin-draft',
     {
       resolve: 'gatsby-transformer-remark',
       options: {

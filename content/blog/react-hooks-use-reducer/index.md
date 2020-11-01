@@ -1,17 +1,18 @@
 ---
 slug: react-hooks-useReducer
 title: React Hooks - useReducer
-date: '2020-10-19'
+date: 2020-10-19
 author: niraj georgian
 description: ''
 categories:
-  - 'react'
-  - 'hooks'
+  - react
+  - hooks
 keywords:
   - javascript
   - functional component
 banner: './images/aron-visuals.jpeg'
 bannerCredit: 'Photo by [Aron Visuals](https://unsplash.com/@aronvisuals)'
+draft: true
 ---
 
 Reducer's are not new to react as it all started with redux and community loved it so much that react team build out an entire hook based on this pattern.

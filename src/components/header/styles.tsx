@@ -56,6 +56,7 @@ export const NavbarLinksWrapper = styled.div<{
 `
 
 export const ToggleThemeWrapper = styled.button`
+  display: flex;
   background: none;
   border: none;
   cursor: pointer;

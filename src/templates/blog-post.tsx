@@ -8,7 +8,6 @@ import { useContext } from 'react'
 import Image from 'gatsby-image'
 
 export const BlogWrapper = styled.div`
-  padding: 4rem 0;
   display: flex;
   align-items: flex-start;
   flex-direction: column;

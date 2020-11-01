@@ -11,6 +11,11 @@ export const NavbarWrapper = styled.div`
   }
 `
 
+export const LinksWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
 export const NavbarLinksWrapper = styled.div<{
   theme: string
   desktop: boolean

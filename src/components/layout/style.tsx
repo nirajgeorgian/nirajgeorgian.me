@@ -16,6 +16,14 @@ export const GlobalStyle = createGlobalStyle<ITheme>`
   h1, h2, h3, h4, h5, h6 {
     color: ${({ theme }) => (theme === 'dark' ? 'white' : 'black')};
   }
+
+  a {
+    color: ${({ theme }) => (theme === 'dark' ? 'rgb(0, 173, 181)' : 'black')};
+
+    &:hover {
+      color: rgb(0, 173, 181);
+    }
+  }
 `
 
 export const Wrapper = styled.div`

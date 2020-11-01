@@ -10,7 +10,7 @@ categories:
 keywords:
   - javascript
   - functional component
-banner: './images/aron-visuals.png'
+banner: './images/aron-visuals.jpeg'
 bannerCredit: 'Photo by [Aron Visuals](https://unsplash.com/@aronvisuals)'
 ---
 

@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Layout from 'components/layout'
 import { Article } from 'components/base'
 import { useContext } from 'react'
+import Image, { FluidObject } from 'gatsby-image'
 
 export const BlogWrapper = styled.div`
   padding: 4rem 0;
@@ -67,8 +68,7 @@ export const BlogLinks: React.FC<{ node: any; title: string }> = ({
 export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
   const post = data.markdownRemark
   const { fields, frontmatter } = post
-  // const siteTitle = data.site.siteMetadata.title
-  // const { previous, next } = pageContext
+  const { banner } = frontmatter
 
   return (
     <BlogPostLayout>
@@ -77,8 +77,11 @@ export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
           <BlogWrapper>
             <BlogArticle>
               <header>
+                {banner ? <Image fluid={banner.childImageSharp.fluid} /> : null}
                 <ArticleHeader theme={theme}>{fields.title}</ArticleHeader>
-                <p>{frontmatter.date}</p>
+                <p>
+                  {frontmatter.date} - <strong>{fields.author}</strong>
+                </p>
               </header>
               <section dangerouslySetInnerHTML={{ __html: post.html }} />
             </BlogArticle>
@@ -103,16 +106,26 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       fields {
-        banner
         title
         author
         description
-        bannerCredit
       }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        banner {
+          publicURL
+          childImageSharp {
+            id
+            fixed {
+              src
+            }
+            fluid(maxWidth: 1200) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

@@ -3,7 +3,7 @@
 # todo
 
 - [ ] create author link in blog details page
-- [ ] fix anchor tah color
+- [*] fix anchor tag color
 - [ ] add theme switcher in dark mode
 - [ ] add newsletter subscription option
 - [ ] add next and previous blog link

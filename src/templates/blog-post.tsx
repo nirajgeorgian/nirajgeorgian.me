@@ -67,7 +67,7 @@ export const BlogLinks: React.FC<{ node: any; title: string }> = ({
 export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
   const post = data.markdownRemark
   const { fields, frontmatter } = post
-  const { banner } = frontmatter
+  const { banner, bannerCredit, creditLink, title } = frontmatter
 
   return (
     <BlogPostLayout>
@@ -76,7 +76,15 @@ export const BlogPostTemplate: React.FC<{ data: any }> = ({ data }) => {
           <BlogWrapper>
             <BlogArticle>
               <header>
-                {banner ? <Image fluid={banner.childImageSharp.fluid} /> : null}
+                {banner ? (
+                  <Image
+                    title={title || ''}
+                    fluid={banner.childImageSharp.fluid}
+                  />
+                ) : null}
+                <a href={creditLink} title={title}>
+                  {bannerCredit}
+                </a>
                 <ArticleHeader theme={theme}>{fields.title}</ArticleHeader>
                 <p>
                   {frontmatter.date} - <strong>{fields.author}</strong>
@@ -113,6 +121,8 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        bannerCredit
+        creditLink
         banner {
           publicURL
           childImageSharp {

@@ -1,5 +1,5 @@
 ---
-slug: react-hooks-useState
+slug: react-hooks-use-state
 title: React Hooks - useState
 date: 2020-10-11
 author: niraj georgian
@@ -11,7 +11,8 @@ keywords:
   - javascript
   - functional component
 banner: './images/aron-visuals.jpeg'
-bannerCredit: 'Photo by [Aron Visuals](https://unsplash.com/@aronvisuals)'
+bannerCredit: Photo by Aron Visuals
+creditLink: https://unsplash.com/@aronvisuals?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText
 ---
 
 With each passing day, we see many new frontend libraries coming into practices. All major frontend development started with [JQuery](https://jquery.com/) and today we are here, where we have [React](https://reactjs.org/), [Angular](https://angular.io/), [Vue](https://vuejs.org/), [Ember](https://emberjs.com/) etc.

@@ -41,7 +41,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: 'author',
       node,
-      value: node.frontmatter.author || 'Niraj Georgian'
+      value: node.frontmatter.author || 'niraj georgian'
     })
 
     createNodeField({
@@ -60,7 +60,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       {
         allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
+          sort: { fields: [frontmatter___date], order: ASC }
           limit: 1000
           filter: { fields: { draft: { eq: false } } }
         ) {

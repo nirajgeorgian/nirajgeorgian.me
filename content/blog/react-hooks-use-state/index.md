@@ -210,7 +210,7 @@ export default function App() {
 ```
 
 Here we are passing a function to useEffect and inside that function we first check for username key in local storage and if we have a value, we use setUsername to assign the value back to the username state.
-This way the user can see their username as nitial value in the username field so that user does not have to type again and again and on each consecutive save. We will update the localStorage with the new value when user clicks on submit.
+This way the user can see their username as initial value in the username field so that user does not have to type again and again and on each consecutive save. We will update the localStorage with the new value when user clicks on submit.
 
 One step down, now what if we need multiple keys to store inside localStorage we have to repeat this process again and again, so what we can do is that, we can wrap the common functionality into one custom hook and use it wherever we need.
 I'm not going to explain how to create custom hooks for now, but we can use some prebuild hooks from opensource community. One such hook is `useLocalStorage`.
